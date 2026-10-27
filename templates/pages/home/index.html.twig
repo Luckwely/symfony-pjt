@@ -1,0 +1,193 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <!-- Hero Section -->
+    <section class="relative bg-[#0B0F19] overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80"
+                alt="Workspace"
+                class="w-full h-full object-cover opacity-40"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0B0F19] via-[#0B0F19]/80 to-transparent"></div>
+        </div>
+
+        <div
+            class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 flex flex-col items-center justify-center text-center"
+        >
+            <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tight mb-4">Le Blog du Développeur</h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">Articles, tutoriels et astuces sur le web moderne</p>
+            <button
+                class="bg-[#E6007A] hover:bg-[#c40068] text-white px-8 py-3 rounded-md font-bold uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl shadow-[#E6007A]/40"
+            >Explorer
+                les articles</button>
+        </div>
+    </section>
+
+    <!-- Featured Articles (À LA UNE) -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2
+                    class="text-2xl font-bold text-[#0B0F19] uppercase tracking-wide inline-block border-b-4 border-[#E6007A] pb-1"
+                >
+                    À La Une</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800 group hover:border-gray-700 transition-colors"
+                >
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="CSS Code"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <span
+                            class="inline-block bg-[#E6007A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+                        >CSS</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Maîtriser CSS Grid</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Découvrez comment créer des mises en page complexes
+                            et responsives.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800 group hover:border-gray-700 transition-colors"
+                >
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="JavaScript Code"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <span
+                            class="inline-block bg-[#6366F1] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+                        >JavaScript</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Les nouveautés ES2026</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Tour d'horizon des fonctionnalités qui vont changer
+                            votre code.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800 group hover:border-gray-700 transition-colors"
+                >
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Design"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <span
+                            class="inline-block bg-[#E6007A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+                        >Design</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Créer une identité visuelle</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Les principes fondamentaux du design appliqués au
+                            web.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Articles (ARTICLES RÉCENTS) -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2
+                    class="text-2xl font-bold text-[#0B0F19] uppercase tracking-wide inline-block border-b-4 border-[#E6007A] pb-1"
+                >
+                    Articles Récents</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for article in articles %}
+                    <!-- Row 1, Card 1 -->
+                    <div
+                        class="bg-gray-900 rounded-xl p-4 flex items-start gap-4 border border-gray-800 hover:border-gray-700 transition-colors"
+                    >
+                        <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                            <img
+                                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                                alt="Performance"
+                                class="w-full h-full object-cover"
+                            >
+                        </div>
+                        <div class="flex-1">
+                            <span
+                                class="inline-block bg-[#E6007A] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider mb-2"
+                            >{{ article.category.title }}</span>
+                            <h3 class="text-lg font-bold text-white leading-tight mb-1">{{ article.title }}</h3>
+                            <p class="text-gray-400 text-xs">{{ article.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories (CATÉGORIES) -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2
+                    class="text-2xl font-bold text-[#0B0F19] uppercase tracking-wide inline-block border-b-4 border-[#E6007A] pb-1"
+                >
+                    Catégories</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {% for category in categories %}
+
+                    <div
+                        class="bg-gradient-to-br from-[#E6007A] to-[#b3005e] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                    >
+                        <svg class="w-10 h-10 text-white mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                            ></path>
+                        </svg>
+                        <span class="text-white font-bold uppercase tracking-wider text-lg">{{ category.title }}</span>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter (RESTEZ INFORMÉ) -->
+    <section class="py-16 bg-gradient-to-r from-[#E6007A] to-[#6366F1]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-black text-white uppercase tracking-wide mb-3">Restez Informé</h2>
+            <p class="text-white/90 mb-8 text-lg">Inscrivez-vous à la newsletter pour recevoir les derniers articles</p>
+
+            <form class="flex flex-col sm:flex-row justify-center gap-3 max-w-lg mx-auto">
+                <input
+                    type="email"
+                    placeholder="Votre adresse email"
+                    class="flex-1 px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/90 backdrop-blur-sm"
+                >
+                <button
+                    type="submit"
+                    class="bg-black hover:bg-gray-900 text-white px-8 py-3 rounded-md font-bold uppercase tracking-wider transition-colors"
+                >S'inscrire</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

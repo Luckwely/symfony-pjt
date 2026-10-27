@@ -1,0 +1,98 @@
+{% extends 'layouts/base.html.twig' %}
+{% block title %}Article{% endblock %}
+
+{% block body %}
+
+    <!-- Hero Section -->
+    <header class="bg-[#1e2530] py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
+                Tous les <span class="text-[#e01e6e]">articles</span>
+            </h1>
+            <p class="text-lg text-gray-400 mb-10">57 articles publiés — Trouvez votre prochaine lecture</p>
+
+            <!-- Search Bar -->
+            <form  method="GET" action="{{ path('app_article_index') }}" class="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-2 flex flex-col md:flex-row gap-2">
+                <div class="flex-1 flex items-center bg-gray-50 rounded-lg px-4 py-2 border border-gray-200">
+                    <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        ></path>
+                    </svg>
+                    <input
+                        name="title"
+                        value="{{ title }}"
+                        type="text"
+                        placeholder="Rechercher un article..."
+                        class="w-full bg-transparent text-gray-800 placeholder-gray-400 focus:outline-none text-sm"
+                    >
+                </div>
+                <div class="flex items-center bg-gray-50 rounded-lg px-4 py-2 border border-gray-200">
+                    <select name="category" class="bg-transparent text-gray-600 text-sm focus:outline-none w-full md:w-auto cursor-pointer">
+                        <option value="" selected>Toutes les catégories</option>
+                        {% for category in categories %}
+                            <option
+                                {{ category.slug === categorySlug ? 'selected' : '' }}
+                                value="{{ category.slug }}">{{ category.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button
+                    class="bg-[#e01e6e] hover:bg-[#c4185e] text-white px-6 py-2 rounded-lg font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        ></path>
+                    </svg>
+                    Rechercher
+                </button>
+            </form>
+            
+        </div>
+    </header>
+
+    <!-- Article Grid -->
+    <main class="flex-grow bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                {% for article in pagination %}
+                    <twig:ArticleCard :article="article"/>
+                {% endfor %}
+
+            </div>
+
+            <twig:NavPagination :pagination="pagination" />
+    
+        </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="bg-[linear-gradient(135deg,_#e01e6e_0%,_#7c3aed_100%)] py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-black text-white uppercase tracking-wide mb-3">Restez Informé</h2>
+            <p class="text-white/90 mb-8 text-lg font-medium">Ne ratez plus aucun article — inscrivez-vous à la newsletter
+            </p>
+
+            <form class="flex flex-col sm:flex-row justify-center gap-3 max-w-lg mx-auto">
+                <input
+                    type="email"
+                    placeholder="Votre adresse email"
+                    class="flex-1 px-5 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/95 backdrop-blur-sm shadow-lg"
+                >
+                <button
+                    type="submit"
+                    class="bg-[#0b0f19] hover:bg-gray-900 text-white px-8 py-3 rounded-lg font-bold uppercase tracking-wider transition-colors shadow-lg"
+                >S'inscrire</button>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

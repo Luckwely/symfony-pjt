@@ -1,0 +1,93 @@
+{% extends 'layouts/auth_base.html.twig' %}
+{% block title %} Créer un compte – MonBlog {% endblock %}
+{% block body %}
+<div class="flex items-center justify-center h-screen w-full bg-gray-100">
+    <div class="w-full max-w-3xl bg-white">
+        <div class="bg-gray-100 px-4 sm:px-8 py-10 sm:py-12 w-full">
+            <!-- Header -->
+            <header class="text-center">
+                <a href="{{path('app_home')}}" class="text-3xl font-extrabold tracking-wide text-slate-900">Mon<span
+                        class="text-[#f5329e]">Blog</span></a>
+                <h1 class="mt-5 text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-slate-900">
+                    Créer un <span class="text-[#f5329e]">compte</span>
+                </h1>
+                <p class="mt-3 text-sm italic text-gray-500">Rejoignez la communauté des développeurs passionnés</p>
+            </header>
+
+            {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            {{ form_errors(registrationForm) }}
+
+            <!-- Card -->
+            <main class="mt-10 mx-auto max-w-xl bg-white rounded-2xl shadow-xl shadow-slate-300/60 p-6 sm:p-9">
+                {{ form_start(registrationForm) }}
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+
+                        {{ form_row(registrationForm.firstname) }}
+                    </div>
+                    <div>
+
+                        {{ form_row(registrationForm.lastname) }}
+                    </div>
+                </div>
+
+                <div class="mt-2">
+
+                    {{ form_row(registrationForm.email) }}
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
+                    <div>
+                        {{ form_row(registrationForm.plainPassword.first) }}
+                    </div>
+                    <div>
+                        {{ form_row(registrationForm.plainPassword.second) }}
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 pt-1 mt-2">
+                    {{ form_row(registrationForm.agreeTerms) }}
+                    <label for="terms" class="text-sm text-slate-700 cursor-pointer">
+                        J'accepte les
+                        <a href="#"
+                            class="font-semibold text-[#f5329e] hover:text-[#f5329e]-[#d9217f] hover:underline">conditions
+                            d'utilisation</a>
+                        et la
+                        <a href="#"
+                            class="font-semibold text-[#f5329e] hover:text-[#f5329e]-[#d9217f] hover:underline">politique
+                            de confidentialité</a>
+                    </label>
+                </div>
+
+                <button type="submit"
+                    class="w-full rounded-lg bg-[#f5329e] py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-md shadow-[#f5329e]/30 transition hover:bg-[#f5329e]-[#d9217f] hover:shadow-lg active:scale-[.99] focus:outline-none focus:ring-4 focus:ring-[#f5329e]/40 mt-2">
+                    Créer mon compte
+                </button>
+                {{ form_end(registrationForm) }}
+
+                <!-- Divider -->
+                <div class="mt-8 flex items-center gap-4">
+                    <span class="h-px flex-1 bg-gray-200"></span>
+                    <span class="text-xs font-semibold uppercase text-gray-400">ou</span>
+                    <span class="h-px flex-1 bg-gray-200"></span>
+                </div>
+
+                <p class="mt-5 text-center text-sm text-slate-700">
+                    Vous avez déjà un compte ?
+                    <a href="{{ path('app_login') }}"
+                        class="ml-1 font-bold uppercase text-[#f5329e] hover:text-[#f5329e]-[#d9217f] hover:underline">Se
+                        connecter</a>
+                </p>
+            </main>
+            <p class="mt-8 text-center text-xs text-slate-400 bg-gray-100">
+                En créant un compte, vous rejoignez une communauté de 12 000+ développeurs
+            </p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

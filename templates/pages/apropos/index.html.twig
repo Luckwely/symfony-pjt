@@ -1,0 +1,175 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block body %}
+<!-- 2. Hero Section -->
+<header class="relative bg-[#0d0e12] overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80"
+            alt="Workspace" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0d0e12]/70 to-[#0d0e12]"></div>
+    </div>
+
+    <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 flex flex-col items-center justify-center text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">À Propos de <span
+                class="text-[#e01a8a]">MonBlog</span></h1>
+        <p class="text-lg text-gray-400 italic">Le blog du développeur passionné depuis 2020</p>
+    </div>
+</header>
+
+<!-- 3. "Notre Histoire" Section -->
+<section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Left Column -->
+            <div class="lg:w-1/2">
+                <h2
+                    class="text-2xl font-bold text-[#e01a8a] uppercase tracking-wide inline-block border-b-4 border-[#e01a8a] pb-1 mb-6">
+                    Notre Histoire</h2>
+                <p class="text-gray-600 leading-relaxed mb-4">MonBlog est né en 2020 de la passion d'une équipe de
+                    développeurs souhaitant partager leurs connaissances et leur expérience du web moderne.</p>
+                <p class="text-gray-600 leading-relaxed mb-6">Depuis, nous publions régulièrement des articles,
+                    tutoriels et réflexions autour du développement web, du design et des nouvelles technologies.</p>
+                <p class="text-gray-900 font-bold text-lg">Notre objectif : rendre le web plus accessible et plus beau,
+                    un article à la fois.</p>
+            </div>
+            <!-- Right Column -->
+            <div class="lg:w-1/2">
+                <div class="rounded-xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Developers collaborating" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. "Nos Valeurs" Section -->
+<section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2
+                class="text-2xl font-bold text-[#e01a8a] uppercase tracking-wide inline-block border-b-4 border-[#e01a8a] pb-1">
+                Nos Valeurs</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div
+                class="bg-gray-50 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                <div class="text-4xl mb-4 flex justify-center">🎯</div>
+                <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wide mb-3">Qualité</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Chaque article est soigneusement rédigé et vérifié pour
+                    vous offrir un contenu fiable et pertinent.</p>
+            </div>
+            <!-- Card 2 -->
+            <div
+                class="bg-gray-50 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                <div class="text-4xl mb-4 flex justify-center">🤝</div>
+                <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wide mb-3">Partage</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Nous croyons que le savoir doit être partagé librement
+                    pour faire grandir toute la communauté.</p>
+            </div>
+            <!-- Card 3 -->
+            <div
+                class="bg-gray-50 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                <div class="text-4xl mb-4 flex justify-center">🚀</div>
+                <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wide mb-3">Innovation</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Nous restons à l'affût des dernières tendances pour
+                    vous proposer un contenu toujours à jour.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. "Notre Equipe" Section -->
+<section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2
+                class="text-2xl font-bold text-[#e01a8a] uppercase tracking-wide inline-block border-b-4 border-[#e01a8a] pb-1">
+                Notre Equipe</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Member 1 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow text-center">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Sophie Martin" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wide mb-1">Sophie Martin</h3>
+                    <p class="text-[#e01a8a] text-xs font-bold uppercase tracking-wider mb-3">Développeuse Front-End</p>
+                    <p class="text-gray-500 text-sm leading-relaxed">Passionnée de CSS et de design, Sophie aime créer
+                        des interfaces élégantes.</p>
+                </div>
+            </div>
+            <!-- Member 2 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow text-center">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Thomas Dubois" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wide mb-1">Thomas Dubois</h3>
+                    <p class="text-[#e01a8a] text-xs font-bold uppercase tracking-wider mb-3">Développeur Back-End</p>
+                    <p class="text-gray-500 text-sm leading-relaxed">Expert Symfony et PHP, Thomas est toujours à la
+                        recherche d'optimisations.</p>
+                </div>
+            </div>
+            <!-- Member 3 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow text-center">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Léa Bernard" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-wide mb-1">Léa Bernard</h3>
+                    <p class="text-[#e01a8a] text-xs font-bold uppercase tracking-wider mb-3">Designer UX/UI</p>
+                    <p class="text-gray-500 text-sm leading-relaxed">Léa conçoit des expériences utilisateur fluides et
+                        intuitives.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Counter/Stats Banner -->
+<section class="bg-[#0d0e12] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01a8a] mb-2">2020</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Création</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01a8a] mb-2">57</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Articles</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01a8a] mb-2">12k</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Lecteurs</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01a8a] mb-2">3</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Auteurs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. CTA Banner -->
+<section class="bg-[linear-gradient(90deg,_#7c3aed_0%,_#e01a8a_100%)] py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-wide mb-4">Une question ?</h2>
+        <p class="text-white/90 text-lg mb-8">N'hésitez pas à nous contacter, nous répondons sous 24h.</p>
+        <button
+            class="bg-black hover:bg-gray-900 text-white px-8 py-3 rounded-full font-bold uppercase tracking-wider transition-all hover:scale-105 shadow-lg">Nous
+            contacter</button>
+    </div>
+</section>
+
+{% endblock %}

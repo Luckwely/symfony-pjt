@@ -1,0 +1,147 @@
+{% extends 'layouts/base.html.twig' %}
+{% block title %}Category{% endblock %}
+{% block body %}
+
+<!-- B. Header & Category Filter Tags -->
+<header class="bg-[#1e2530] pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">Nos <span
+                class="text-[#e01e6e]">Catégories</span></h1>
+        <p class="text-lg text-gray-400 italic">Explorez nos articles par thématique</p>
+    </div>
+</header>
+
+<!-- Filter Tags -->
+<div class="bg-[#1e2530] pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-3">
+            <button
+                class="bg-[#e01e6e] text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-transform hover:scale-105">Toutes</button>
+            {% for category in categories %}
+                <twig:CategoryLabel :title="category.title" />
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<!-- C. Categories Grid -->
+<main class="bg-gray-100 py-12 flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {% for category in pagination %}
+                <twig:CategoryCard :category="category" />
+            {% endfor %}
+
+        </div>
+    </div>
+</main>
+
+<!-- D. Stats Counter Section -->
+<section class="bg-[#0b0f19] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01e6e] mb-2">{{ articles|length }}</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Articles</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01e6e] mb-2">{{ categories|length }}</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Catégories</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01e6e] mb-2">12k</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Lecteurs</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#e01e6e] mb-2">{{ users|length }}</div>
+                <div class="text-gray-400 text-sm font-bold uppercase tracking-wider">Auteurs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- E. "Catégorie Populaire" Feature Section -->
+<section class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10">
+            <h2
+                class="text-2xl font-bold text-gray-900 uppercase tracking-wide inline-block border-b-4 border-[#e01e6e] pb-1">
+                Catégorie Populaire</h2>
+        </div>
+
+        <div class="flex flex-col lg:flex-row bg-white rounded-2xl overflow-hidden shadow-xl">
+            <!-- Left Side: Code Editor Mockup -->
+            <div class="lg:w-1/2 bg-[#1e1e1e] p-6 relative min-h-[300px] flex items-center justify-center">
+                <div class="w-full max-w-md bg-[#2d2d2d] rounded-lg shadow-2xl overflow-hidden border border-gray-700">
+                    <div class="flex items-center px-4 py-2 bg-[#3c3c3c] border-b border-gray-700">
+                        <div class="flex space-x-1.5">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="ml-4 text-xs text-gray-400 font-mono">index.html</div>
+                    </div>
+                    <div class="p-4 font-mono text-xs leading-relaxed text-gray-300 overflow-hidden">
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">1</span><span
+                                class="text-blue-400">&lt;!DOCTYPE</span> <span class="text-green-400">html</span><span
+                                class="text-blue-400">&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">2</span><span
+                                class="text-blue-400">&lt;html</span> <span class="text-yellow-300">lang</span>=<span
+                                class="text-orange-400">"fr"</span><span class="text-blue-400">&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">3</span><span
+                                class="text-blue-400">&lt;head&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">4</span> <span
+                                class="text-blue-400">&lt;meta</span> <span class="text-yellow-300">charset</span>=<span
+                                class="text-orange-400">"UTF-8"</span><span class="text-blue-400">&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">5</span> <span
+                                class="text-blue-400">&lt;title&gt;</span><span
+                                class="text-gray-100">MonBlog</span><span class="text-blue-400">&lt;/title&gt;</span>
+                        </div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">6</span><span
+                                class="text-blue-400">&lt;/head&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">7</span><span
+                                class="text-blue-400">&lt;body&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">8</span> <span
+                                class="text-blue-400">&lt;h1</span> <span class="text-yellow-300">class</span>=<span
+                                class="text-orange-400">"title"</span><span class="text-blue-400">&gt;</span><span
+                                class="text-gray-100">Hello World</span><span class="text-blue-400">&lt;/h1&gt;</span>
+                        </div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">9</span><span
+                                class="text-blue-400">&lt;/body&gt;</span></div>
+                        <div class="flex"><span class="text-gray-500 w-6 text-right mr-3">10</span><span
+                                class="text-blue-400">&lt;/html&gt;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Info Block -->
+            <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center bg-white">
+                <span
+                    class="inline-block bg-[#e01e6e]/10 text-[#e01e6e] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 w-fit">★
+                    Top Catégorie</span>
+                <h3 class="text-3xl font-black text-gray-900 uppercase tracking-wide mb-4">Développement</h3>
+                <p class="text-gray-600 leading-relaxed mb-8">Notre catégorie la plus lue ! Retrouvez tous nos articles
+                    sur le HTML, CSS, JavaScript, PHP, Symfony et bien plus encore. Des tutoriels pas à pas pour
+                    progresser rapidement.</p>
+                <button
+                    class="bg-[#e01e6e] hover:bg-[#c4185e] text-white px-8 py-3 rounded-lg font-bold uppercase tracking-wider transition-all hover:scale-105 shadow-lg shadow-[#e01e6e]/30 w-fit">Voir
+                    les 12 articles</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- F. Footer / CTA -->
+<footer class="bg-[#e01e6e] py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-wide mb-4">Une catégorie en tête ?</h2>
+        <p class="text-white/90 text-lg mb-8">Proposez-nous une nouvelle thématique à explorer !</p>
+        <button
+            class="bg-[#0b0f19] hover:bg-gray-900 text-white px-8 py-3 rounded-full font-bold uppercase tracking-wider transition-all hover:scale-105 shadow-lg">Proposer
+            une catégorie</button>
+    </div>
+</footer>
+
+{% endblock %}

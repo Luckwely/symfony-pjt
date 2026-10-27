@@ -1,0 +1,32 @@
+
+<article {{ attributes }}
+    class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+    <div class="h-48 bg-gray-200 relative overflow-hidden">
+        <img src="{{ article.image}}"
+            alt="CSS Grid" class="w-full h-full object-cover">
+        <span
+            class="absolute top-3 left-3 bg-[#e01e6e] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">{{ article.category.title}}</span>
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-lg font-bold text-gray-900 mb-2">{{ article.title }}</h3>
+        <p class="text-gray-500 text-sm mb-4 flex-grow">{{ article.description }}</p>
+        <div class="flex items-center justify-between text-xs text-gray-400 border-t border-gray-100 pt-3">
+            <span class="flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                    </path>
+                </svg>
+                {{ article.createdAt|date() }}
+            </span>
+            <span class="flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                {{ article.createdAt|ago }}
+            </span>
+        </div>
+    </div>
+</article>
+

@@ -1,0 +1,30 @@
+<header class="bg-slate-900">
+    <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-4 py-3 sm:justify-between sm:px-6 sm:py-4">
+        <a href="{{ path('app_home') }}" class="text-2xl font-extrabold tracking-wide text-white">Mon<span
+                class="text-pink-500"
+            >Blog</span></a>
+        <ul
+            class="order-3 flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-medium uppercase tracking-wide text-slate-300 sm:gap-x-6 md:order-none md:w-auto"
+        >
+            <li><a href="{{ path('app_home') }}" class="transition hover:text-white">Accueil</a></li>
+            <li><a href="{{ path('app_article_index') }}" class="transition hover:text-white">Articles</a></li>
+            <li><a href="{{ path('app_category_index') }}" class="transition hover:text-white">Catégories</a></li>
+            <li><a href="{{ path('app_apropos') }}" class="transition hover:text-white">À propos</a></li>
+        </ul>
+        {% if app.user %}
+            <div class="flex flex-wrap justify-center gap-2 text-xs font-bold uppercase text-white">
+                <a href="{{ path('app_account') }}" class="rounded-md bg-pink-600 px-4 py-2.5 transition hover:bg-pink-500">MON COMPTE</a>
+                <a href="{{ logout_path() }}" class="rounded-md bg-pink-600 px-4 py-2.5 transition hover:bg-pink-500">DECONNEXION</a>
+            </div>
+        {% else %}
+            <div class="flex flex-wrap justify-center gap-2 text-xs font-bold uppercase text-white">
+                <a
+                    href="{{ path('app_register') }}"
+                    class="rounded-md bg-pink-500 px-4 py-2.5 transition hover:bg-pink-400"
+                >S'inscrire</a>
+                <a href="{{ path('app_login') }}" class="rounded-md bg-pink-500 px-4 py-2.5 transition hover:bg-pink-400">Se
+                    connecter</a>
+            </div>
+        {% endif %}
+    </nav>
+</header>

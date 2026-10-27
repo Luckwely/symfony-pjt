@@ -1,0 +1,86 @@
+{% set data = pagination.paginationData %}
+{% set route = app.request.attributes.get('_route') %}
+{% set query = app.request.query.all %}
+{% set pageParameterName = pagination.paginatorOptions.pageParameterName|default('page') %}
+
+{% set pageCount = data.pageCount %}
+{% set current = data.current %}
+{% set startPage = data.startPage %}
+{% set endPage = data.endPage %}
+{% set pagesInRange = data.pagesInRange %}
+{% set previous = data.previous|default(null) %}
+{% set next = data.next|default(null) %}
+
+{% if pageCount > 1 %}
+<div {{ attributes }} class="mt-12 flex justify-center">
+    <nav class="inline-flex items-center bg-white rounded-lg shadow-sm border border-gray-200 p-1">
+
+        {# Previous #}
+        {% if previous is not null %}
+            <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}"
+               class="px-3 py-2 text-gray-500 hover:text-[#e01e6e] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </a>
+        {% else %}
+            <span class="px-3 py-2 text-gray-300 cursor-not-allowed">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </span>
+        {% endif %}
+
+        {# First page + ellipsis #}
+        {% if startPage > 1 %}
+            <a href="{{ path(route, query|merge({(pageParameterName): 1})) }}"
+               class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#e01e6e] hover:bg-gray-50 rounded-md mx-1 transition-colors">1</a>
+            {% if startPage == 3 %}
+                <a href="{{ path(route, query|merge({(pageParameterName): 2})) }}"
+                   class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#e01e6e] hover:bg-gray-50 rounded-md mx-1 transition-colors">2</a>
+            {% elseif startPage != 2 %}
+                <span class="px-3 py-2 text-gray-400">...</span>
+            {% endif %}
+        {% endif %}
+
+        {# Page range #}
+        {% for page in pagesInRange %}
+            {% if page == current %}
+                <span class="px-4 py-2 text-sm font-bold text-white bg-[#e01e6e] rounded-md mx-1">{{ page }}</span>
+            {% else %}
+                <a href="{{ path(route, query|merge({(pageParameterName): page})) }}"
+                   class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#e01e6e] hover:bg-gray-50 rounded-md mx-1 transition-colors">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {# Ellipsis + last page #}
+        {% if endPage < pageCount %}
+            {% if endPage == pageCount - 2 %}
+                <a href="{{ path(route, query|merge({(pageParameterName): pageCount - 1})) }}"
+                   class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#e01e6e] hover:bg-gray-50 rounded-md mx-1 transition-colors">{{ pageCount - 1 }}</a>
+            {% elseif endPage != pageCount - 1 %}
+                <span class="px-3 py-2 text-gray-400">...</span>
+            {% endif %}
+            <a href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}"
+               class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#e01e6e] hover:bg-gray-50 rounded-md mx-1 transition-colors">{{ pageCount }}</a>
+        {% endif %}
+
+        {# Next #}
+        {% if next is not null %}
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}"
+               class="px-3 py-2 text-gray-500 hover:text-[#e01e6e] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        {% else %}
+            <span class="px-3 py-2 text-gray-300 cursor-not-allowed">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </span>
+        {% endif %}
+
+    </nav>
+</div>
+{% endif %}

@@ -1,3 +1,5 @@
-body {
-    background-color: skyblue;
+@import "tailwindcss";
+
+.input {
+    @apply w-full bg-white
 }
